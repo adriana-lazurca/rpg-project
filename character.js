@@ -11,20 +11,28 @@ function Person(name, race, item) {
     this.maxHealing = 30;
 
     this.hit = function (enemy) {
-        var damagePoints = generateRandomNr(this.min, this.maxDamage)
-        enemy.currenthealth = enemy.currenthealth - damagePoints;
-    };
+        var damagePoints = generateRandomNr(this.min, this.maxDamage);
+        var isAttackDeflected = Math.random() < 0.3;
+        
+        if (enemy.race == "Elves" && isAttackDeflected) {
+            //ELVES - 30% chance to deflect the attack back to the opponent. 
+            //The attacker takes damage equal to 50% of the original hit. The elf takes no damage.
+            this.currentHealth = this.currentHealth - damagePoints / 2;
+        }
 
+        else {
+            enemy.currentHealth = enemy.currentHealth - damagePoints;
+        }
+    };
 
     this.heal = function () {
         var healingPoints = generateRandomNr(this.min, this.maxHealing);
-        this.currenthealth = this.currenthealth + healingPoints;
-
+        this.currentHealth = this.currentHealth + healingPoints;
     };
 
     this.yield = function () { };
 
-    this.damage = function (){};
+    this.damage = function () { };
 
     this.totalDamage = this.damage();
 
@@ -58,7 +66,6 @@ function onDocumentLoad() {
 
 window.addEventListener("load", onDocumentLoad);
 
-
 // SHOW ELEMENTS ON CLICK
 function createCharacter(nameId, raceId, itemId) {
     var name = document.getElementById(nameId).value;
@@ -68,8 +75,8 @@ function createCharacter(nameId, raceId, itemId) {
     var player = new Person(name, race, item);
     handleRace(player);
     return player;
-    
-    }
+
+}
 
 function changeCharacterName(id, player) {
     var fighter = document.getElementById(id);

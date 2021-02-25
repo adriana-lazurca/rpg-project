@@ -24,8 +24,7 @@ function handleRace (player) {
             break;
     
         case "Elves":
-            //ELVES - 30% chance to deflect the attack back to the opponent. 
-            //The attacker takes damage equal to 50% of the original hit. The elf takes no damage.
+            
             break;
     
         case "Vampires":
