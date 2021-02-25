@@ -3,16 +3,28 @@ function Person(name, race, item) {
     this.name = name;
     this.race = race;
     this.item = item;
-    this.currenthealth = 100;
+    this.currentHealth = 100;
     this.maxHealth = 100;
 
     this.min = 3;
     this.maxDamage = 20;
     this.maxHealing = 30;
 
-    this.heal = function () { };
+    this.hit = function (enemy) {
+        var damagePoints = generateRandomNr(this.min, this.maxDamage)
+        enemy.currenthealth = enemy.currenthealth - damagePoints;
+    };
 
-    this.damage = function () { };
+
+    this.heal = function () {
+        var healingPoints = generateRandomNr(this.min, this.maxHealing);
+        this.currenthealth = this.currenthealth + healingPoints;
+
+    };
+
+    this.yield = function () { };
+
+    this.damage = function (){};
 
     this.totalDamage = this.damage();
 
@@ -21,6 +33,11 @@ function Person(name, race, item) {
     };
 }
 
+//Generate Random Nr.
+function generateRandomNr(minNr, maxNr) {
+    var randomNr = Math.floor(Math.random() * (maxNr - minNr + 1)) + minNr;
+    return randomNr;
+}
 
 // HIDE ELEMENTS ONLOAD
 function hideElement(id) {
@@ -49,15 +66,17 @@ function createCharacter(nameId, raceId, itemId) {
     var item = document.getElementById(itemId).value;
 
     var player = new Person(name, race, item);
+    handleRace(player);
     return player;
-}
+    
+    }
 
 function changeCharacterName(id, player) {
     var fighter = document.getElementById(id);
     fighter.innerText = player.name.toUpperCase();
 }
 
-var player;
+var player1;
 var player2;
 
 function onSubmit() {
@@ -81,7 +100,7 @@ function onSubmit() {
 //var logPlayer1 = player1.displayChar();
 //logElement.innerText = logPlayer1;
 
-function scrollToBottom (id) {
+function scrollToBottom(id) {
     var objDiv = document.getElementById(id);
     objDiv.scrollTop = objDiv.scrollHeight;
 }
@@ -96,32 +115,38 @@ function addMessageLog(message) {
 
 document.getElementById("hitButtonPlayer1").addEventListener("click", () => {
     addMessageLog(player1.name + " hits the enemy!");
-    scrollToBottom ("logPlayers");
+    scrollToBottom("logPlayers");
+    player1.hit(player2);
 })
 
 document.getElementById("hitButtonPlayer2").addEventListener("click", () => {
     addMessageLog(player2.name + " hits the enemy!");
-    scrollToBottom ("logPlayers");
+    scrollToBottom("logPlayers");
+    player2.hit(player1);
 })
 
 document.getElementById("healButtonPlayer1").addEventListener("click", () => {
     addMessageLog(player1.name + " heals himself!");
-    scrollToBottom ("logPlayers");
+    scrollToBottom("logPlayers");
+    player1.heal();
 })
 
 document.getElementById("healButtonPlayer2").addEventListener("click", () => {
     addMessageLog(player2.name + " heals himself!");
-    scrollToBottom ("logPlayers");
+    scrollToBottom("logPlayers");
+    player2.heal();
 })
 
 document.getElementById("yieldButtonPlayer1").addEventListener("click", () => {
     addMessageLog(player1.name + " yields!");
-    scrollToBottom ("logPlayers");
+    scrollToBottom("logPlayers");
+    alert(player2.name + " wins the game!!!")
 })
 
 document.getElementById("yieldButtonPlayer2").addEventListener("click", () => {
     addMessageLog(player2.name + " yields!");
-    scrollToBottom ("logPlayers");
+    scrollToBottom("logPlayers");
+    alert(player1.name + " wins the game!!!")
 })
 
 //SUBMIT FORMS
