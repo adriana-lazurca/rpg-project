@@ -3,8 +3,19 @@ function Person(name, race, item) {
     this.name = name;
     this.race = race;
     this.item = item;
-    this.currentHealth = 100;
-    this.maxHealth = 100;
+
+    this.calculateHealth = function () {
+        var health = 100;
+
+        if (this.race == "Orcs") {
+            health = health * 1.4;
+        }
+
+        return health;
+    }
+
+    this.maxHealth = this.calculateHealth();
+    this.currentHealth = this.maxHealth;
 
     this.min = 3;
     this.maxDamage = 20;
@@ -14,25 +25,65 @@ function Person(name, race, item) {
         var damagePoints = generateRandomNr(this.min, this.maxDamage);
         var isAttackDeflected = Math.random() < 0.3;
         
-        if (enemy.race == "Elves" && isAttackDeflected) {
-            //ELVES - 30% chance to deflect the attack back to the opponent. 
-            //The attacker takes damage equal to 50% of the original hit. The elf takes no damage.
-            this.currentHealth = this.currentHealth - damagePoints / 2;
+        if (this.race == "Vampires") {
+            this.currentHealth = this.currentHealth + (enemy.currentHealth * 0.1);
+            enemy.currentHealth = enemy.currentHealth - (enemy.currentHealth * 0.1);
         }
 
+        //function hit needs to be called twice
+        if (this.item == "Bow") {
+            // Bow - 30% chance to attack twice
+            var attacksTwice = Math.random() < 0.3;
+            if (attacksTwice){
+                
+            }
+        }
+
+        if (enemy.race == "Elves" && isAttackDeflected) {
+            this.currentHealth = this.currentHealth - damagePoints / 2;
+        }
+        else if (enemy.race == "Humans") {
+            damagePoints = damagePoints - (damagePoints * 0.2); // 0.8 * damage
+            enemy.currentHealth = enemy.currentHealth - damagePoints;
+        }
         else {
             enemy.currentHealth = enemy.currentHealth - damagePoints;
         }
+
+        switch (enemy.item) {
+
+            case "Boots":
+                //Boots - 30% chance to dodge an attack
+                if (isAttackDeflected) { this.currentHealth = this.currentHealth };
+                break;
+
+            case "Sword":
+                //Sword - 30% more damage
+                this.currentHealth = this.currentHealth - (damagePoints * 0.3);
+                break;
+
+            default:
+                break;
+        }
     };
 
-    this.heal = function () {
+    this.heal = function (enemy) {
         var healingPoints = generateRandomNr(this.min, this.maxHealing);
-        this.currentHealth = this.currentHealth + healingPoints;
+
+        //Staff - 20% increase in healing
+        if (enemy.item == "Staff") {
+            this.currentHealth = this.currentHealth + (healingPoints * 0.2);
+        }
+        else {
+            this.currentHealth = this.currentHealth + healingPoints;
+        }
     };
 
     this.yield = function () { };
 
-    this.damage = function () { };
+    this.damage = function () {
+
+    };
 
     this.totalDamage = this.damage();
 
@@ -73,9 +124,7 @@ function createCharacter(nameId, raceId, itemId) {
     var item = document.getElementById(itemId).value;
 
     var player = new Person(name, race, item);
-    handleRace(player);
     return player;
-
 }
 
 function changeCharacterName(id, player) {
@@ -135,13 +184,13 @@ document.getElementById("hitButtonPlayer2").addEventListener("click", () => {
 document.getElementById("healButtonPlayer1").addEventListener("click", () => {
     addMessageLog(player1.name + " heals himself!");
     scrollToBottom("logPlayers");
-    player1.heal();
+    player1.heal(player2);
 })
 
 document.getElementById("healButtonPlayer2").addEventListener("click", () => {
     addMessageLog(player2.name + " heals himself!");
     scrollToBottom("logPlayers");
-    player2.heal();
+    player2.heal(player1);
 })
 
 document.getElementById("yieldButtonPlayer1").addEventListener("click", () => {
