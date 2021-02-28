@@ -23,20 +23,38 @@ function Person(name, race, item) {
 
     this.hit = function (enemy) {
         var damagePoints = generateRandomNr(this.min, this.maxDamage);
-        var isAttackDeflected = Math.random() < 0.3;
-        
-        if (this.race == "Vampires") {
-            this.currentHealth = this.currentHealth + (enemy.currentHealth * 0.1);
-            enemy.currentHealth = enemy.currentHealth - (enemy.currentHealth * 0.1);
-        }
 
-        //function hit needs to be called twice
         if (this.item == "Bow") {
             // Bow - 30% chance to attack twice
             var attacksTwice = Math.random() < 0.3;
-            if (attacksTwice){
-                
+            if (attacksTwice) {
+                var damagePoints2 = generateRandomNr(this.min, this.maxDamage);
+                damagePoints = damagePoints + damagePoints2;
             }
+        }
+
+        var isAttackDeflected = Math.random() < 0.3;
+        switch (enemy.item) {
+
+            case "Boots":
+                //Boots - 30% chance to dodge an attack
+                if (isAttackDeflected) {
+                    return;
+                };
+                break;
+
+            case "Sword":
+                //Sword - 30% more damage
+                this.currentHealth = this.currentHealth - (damagePoints * 0.3);
+                break;
+
+            default:
+                break;
+        }
+
+        if (this.race == "Vampires") {
+            this.currentHealth = this.currentHealth + (enemy.currentHealth * 0.1);
+            enemy.currentHealth = enemy.currentHealth - (enemy.currentHealth * 0.1);
         }
 
         if (enemy.race == "Elves" && isAttackDeflected) {
@@ -50,21 +68,6 @@ function Person(name, race, item) {
             enemy.currentHealth = enemy.currentHealth - damagePoints;
         }
 
-        switch (enemy.item) {
-
-            case "Boots":
-                //Boots - 30% chance to dodge an attack
-                if (isAttackDeflected) { this.currentHealth = this.currentHealth };
-                break;
-
-            case "Sword":
-                //Sword - 30% more damage
-                this.currentHealth = this.currentHealth - (damagePoints * 0.3);
-                break;
-
-            default:
-                break;
-        }
     };
 
     this.heal = function (enemy) {
