@@ -22,6 +22,10 @@ function Person(name, race, item) {
     this.maxHealing = 30;
 
     this.hit = function (enemy) {
+        if (this.currentHealth <= 0 || enemy.currentHealth <= 0) {
+            return;
+        }
+
         var damagePoints = generateRandomNr(this.min, this.maxDamage);
 
         if (this.item == "Bow") {
@@ -45,7 +49,13 @@ function Person(name, race, item) {
 
             case "Sword":
                 //Sword - 30% more damage
-                this.currentHealth = this.currentHealth - (damagePoints * 0.3);
+                //daca dif este negativa, rezultatul este egal cu 0, altfel este dif
+                if (this.currentHealth < 0) {
+                    this.currentHealth = 0;
+                }
+                else {
+                    this.currentHealth = this.currentHealth - (damagePoints * 0.3);
+                }
                 break;
 
             default:
@@ -95,6 +105,7 @@ function Person(name, race, item) {
     };
 }
 
+
 //Generate Random Nr.
 function generateRandomNr(minNr, maxNr) {
     var randomNr = Math.floor(Math.random() * (maxNr - minNr + 1)) + minNr;
@@ -135,8 +146,18 @@ function changeCharacterName(id, player) {
     fighter.innerText = player.name.toUpperCase();
 }
 
+//progress Bar
+function updateProgressBar(id, player) {
+    var elementPlayer = document.getElementById(id);
+    var widthCalculation = (player.currentHealth * 100) / player.maxHealth;
+    elementPlayer.style.width = widthCalculation + "%";
+    elementPlayer.innerText = player.currentHealth + "%";
+    elementPlayer.ariaValueMax = player.maxHealth;
+}
+
 var player1;
 var player2;
+
 
 function onSubmit() {
     showElement("movesLog");
@@ -152,6 +173,9 @@ function onSubmit() {
     var weaponElements = document.getElementsByClassName("fas fa-khanda");
     weaponElements[0].innerText = player1.item;
     weaponElements[1].innerText = player2.item;
+
+    updateProgressBar("progressPlayer1", player1);
+    updateProgressBar("progressPlayer2", player2);
 
 }
 
@@ -176,12 +200,16 @@ document.getElementById("hitButtonPlayer1").addEventListener("click", () => {
     addMessageLog(player1.name + " hits the enemy!");
     scrollToBottom("logPlayers");
     player1.hit(player2);
+    updateProgressBar("progressPlayer1", player1);
+    updateProgressBar("progressPlayer2", player2);
 })
 
 document.getElementById("hitButtonPlayer2").addEventListener("click", () => {
     addMessageLog(player2.name + " hits the enemy!");
     scrollToBottom("logPlayers");
     player2.hit(player1);
+    updateProgressBar("progressPlayer1", player1);
+    updateProgressBar("progressPlayer2", player2);
 })
 
 document.getElementById("healButtonPlayer1").addEventListener("click", () => {
