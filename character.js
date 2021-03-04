@@ -10,7 +10,6 @@ function Person(name, race, item) {
         if (this.race == "Orcs") {
             health = health * 1.4;
         }
-
         return health;
     }
 
@@ -20,10 +19,19 @@ function Person(name, race, item) {
     this.min = 3;
     this.maxDamage = 20;
     this.maxHealing = 30;
+    //TODO change image races
 
     this.hit = function (enemy) {
         if (this.currentHealth <= 0 || enemy.currentHealth <= 0) {
             return;
+        }
+
+        //Boots - 30% chance to dodge an attack
+        var isAttackDeflected = Math.random() < 0.3;
+        if (enemy.item = "Boots") {
+            if (isAttackDeflected) {
+                return;
+            };
         }
 
         var damagePoints = generateRandomNr(this.min, this.maxDamage);
@@ -37,58 +45,62 @@ function Person(name, race, item) {
             }
         }
 
-        var isAttackDeflected = Math.random() < 0.3;
-        switch (enemy.item) {
-
-            case "Boots":
-                //Boots - 30% chance to dodge an attack
-                if (isAttackDeflected) {
-                    return;
-                };
-                break;
-
-            case "Sword":
-                //Sword - 30% more damage
-                //daca dif este negativa, rezultatul este egal cu 0, altfel este dif
-                if (this.currentHealth < 0) {
-                    this.currentHealth = 0;
-                }
-                else {
-                    this.currentHealth = this.currentHealth - (damagePoints * 0.3);
-                }
-                break;
-
-            default:
-                break;
+        //Sword - 30% more damage
+        if (this.item == "Sword") {
+            enemy.currentHealth = enemy.currentHealth - (damagePoints * 0.3);
+            if (enemy.currentHealth < 0) {
+                enemy.currentHealth = 0;
+            }
         }
 
         if (this.race == "Vampires") {
             this.currentHealth = this.currentHealth + (enemy.currentHealth * 0.1);
             enemy.currentHealth = enemy.currentHealth - (enemy.currentHealth * 0.1);
+            if (enemy.currentHealth < 0) {
+                enemy.currentHealth = 0;
+            }
         }
 
         if (enemy.race == "Elves" && isAttackDeflected) {
             this.currentHealth = this.currentHealth - damagePoints / 2;
+            if (this.currentHealth < 0) {
+                this.currentHealth = 0;
+            }
         }
         else if (enemy.race == "Humans") {
             damagePoints = damagePoints - (damagePoints * 0.2); // 0.8 * damage
             enemy.currentHealth = enemy.currentHealth - damagePoints;
+            if (enemy.currentHealth < 0) {
+                enemy.currentHealth = 0;
+            }
         }
         else {
             enemy.currentHealth = enemy.currentHealth - damagePoints;
+            if (enemy.currentHealth < 0) {
+                enemy.currentHealth = 0;
+            }
         }
-
     };
 
     this.heal = function (enemy) {
+        if (this.currentHealth >= this.maxHealth || this.currentHealth == 0) {
+            return;
+        }
+
         var healingPoints = generateRandomNr(this.min, this.maxHealing);
 
         //Staff - 20% increase in healing
         if (enemy.item == "Staff") {
             this.currentHealth = this.currentHealth + (healingPoints * 0.2);
+            if (this.currentHealth > this.maxHealth) {
+                this.currentHealth = this.maxHealth;
+            }
         }
         else {
             this.currentHealth = this.currentHealth + healingPoints;
+            if (this.currentHealth > this.maxHealth) {
+                this.currentHealth = this.maxHealth;
+            }
         }
     };
 
@@ -151,7 +163,7 @@ function updateProgressBar(id, player) {
     var elementPlayer = document.getElementById(id);
     var widthCalculation = (player.currentHealth * 100) / player.maxHealth;
     elementPlayer.style.width = widthCalculation + "%";
-    elementPlayer.innerText = player.currentHealth + "%";
+    elementPlayer.innerText = Math.floor(player.currentHealth) + "%";
     elementPlayer.ariaValueMax = player.maxHealth;
 }
 
@@ -183,6 +195,7 @@ function onSubmit() {
 //var logPlayer1 = player1.displayChar();
 //logElement.innerText = logPlayer1;
 
+//FUNCTIONS
 function scrollToBottom(id) {
     var objDiv = document.getElementById(id);
     objDiv.scrollTop = objDiv.scrollHeight;
@@ -196,12 +209,45 @@ function addMessageLog(message) {
     logElement.appendChild(createdElement);
 }
 
+function showModal() {
+    $("#exampleModalCenter").modal();
+}
+
+function restartGame(looser, winner) {
+    alert(looser.name + " lost the game!!!")
+
+    var winMessage = winner.name + " won the game!!!"
+    document.getElementById("exampleModalLongTitle").innerText = winMessage.toUpperCase();
+    showModal();
+
+    document.getElementById("playAgain").addEventListener("click", () => {
+        window.location.reload();
+    });
+    document.getElementById("exampleModalCenter").addEventListener("blur", () => {
+        window.location.reload();
+    });
+}
+
+function endGame(firstPlayer, secondPlayer) {
+    if (firstPlayer.currentHealth == 0) {
+        restartGame(firstPlayer, secondPlayer);
+    }
+    if (player2.currentHealth == 0) {
+        restartGame(secondPlayer, firstPlayer);
+    }
+}
+
+
+//BUTTONS
 document.getElementById("hitButtonPlayer1").addEventListener("click", () => {
     addMessageLog(player1.name + " hits the enemy!");
     scrollToBottom("logPlayers");
     player1.hit(player2);
     updateProgressBar("progressPlayer1", player1);
     updateProgressBar("progressPlayer2", player2);
+    setTimeout(function () {
+        endGame(player1, player2);
+    }, 500);
 })
 
 document.getElementById("hitButtonPlayer2").addEventListener("click", () => {
@@ -210,30 +256,35 @@ document.getElementById("hitButtonPlayer2").addEventListener("click", () => {
     player2.hit(player1);
     updateProgressBar("progressPlayer1", player1);
     updateProgressBar("progressPlayer2", player2);
+    setTimeout(function () {
+        endGame(player1, player2);
+    }, 500);
 })
 
 document.getElementById("healButtonPlayer1").addEventListener("click", () => {
     addMessageLog(player1.name + " heals himself!");
     scrollToBottom("logPlayers");
     player1.heal(player2);
+    updateProgressBar("progressPlayer1", player1);
 })
 
 document.getElementById("healButtonPlayer2").addEventListener("click", () => {
     addMessageLog(player2.name + " heals himself!");
     scrollToBottom("logPlayers");
     player2.heal(player1);
+    updateProgressBar("progressPlayer2", player2);
 })
 
 document.getElementById("yieldButtonPlayer1").addEventListener("click", () => {
     addMessageLog(player1.name + " yields!");
     scrollToBottom("logPlayers");
-    alert(player2.name + " wins the game!!!")
+    restartGame(player1, player2);
 })
 
 document.getElementById("yieldButtonPlayer2").addEventListener("click", () => {
     addMessageLog(player2.name + " yields!");
     scrollToBottom("logPlayers");
-    alert(player1.name + " wins the game!!!")
+    restartGame(player2, player1)
 })
 
 //SUBMIT FORMS

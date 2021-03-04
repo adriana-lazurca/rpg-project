@@ -59,103 +59,151 @@
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-secondary" id="hitButtonPlayer1">hit</button>
                     <button type="button" class="btn btn-secondary" id="healButtonPlayer1">heal</button>
-                    <button type="button" class="btn btn-secondary" id="yieldButtonPlayer1">yield</button>
+                    <button type="button" class="btn btn-secondary" id="yieldButtonPlayer1" data-toggle="modal"
+                        data-target="#exampleModalCenter">
+                        yield
+                    </button>
                 </div>
+                <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button id="playAgain" type="button" class="btn btn-primary">Play again</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
             </div>
             <div class="mycols col-6">
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-secondary" id="hitButtonPlayer2">hit</button>
                     <button type="button" class="btn btn-secondary" id="healButtonPlayer2">heal</button>
-                    <button type="button" class="btn btn-secondary" id="yieldButtonPlayer2">yield</button>
+                    <button type="button" class="btn btn-secondary" id="yieldButtonPlayer2" data-toggle="modal"
+                        data-target="#exampleModalCenter">yield</button>
+                </div>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button id="playAgain" type="button" class="btn btn-primary">Play again</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- CREATION PANEL WITH INPUTS AND DROPDOWNS -->
-
-        <form class="needs-validation" novalidate>
-            <div class="row" id="creationPanel">
-                <div class="mycols col-sm-6">
-                    <p>Choose Player 1</p>
-
-
-                    <div class="form-group">
-                        <label for="validationCustom01">Name</label>
-                        <input type="text" class="form-control" id="namePlayer1" value="Mars" required>
-                        <div class="invalid-feedback">
-                            Please choose a name.
-                        </div>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
                     </div>
 
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Items</label>
-                        <select class="form-control" id="itemPlayer1" required>
-                            <option>Boots</option>
-                            <option>Staff</option>
-                            <option>Sword</option>
-                            <option>Bow</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Race</label>
-                        <select class="form-control" id="racePlayer1" required>
-                            <option>Humans</option>
-                            <option>Orcs</option>
-                            <option>Elves</option>
-                            <option>Vampires</option>
-                        </select>
+                    <div class="modal-footer">
+                        <button id="playAgain" type="button" class="btn btn-primary">Play again</button>
                     </div>
                 </div>
-
-                <div class="mycols col-sm-6">
-                    <p>Choose Player 2</p>
-
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Name</label>
-                        <input type="text" class="form-control" id="namePlayer2" value="Jupiter" required>
-                        <div class="invalid-feedback">
-                            Please choose a name.
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Items</label>
-                        <select class="form-control" id="itemPlayer2" required>
-                            <option>Boots</option>
-                            <option>Staff</option>
-                            <option>Sword</option>
-                            <option>Bow</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Race</label>
-                        <select class="form-control" id="racePlayer2" required>
-                            <option>Humans</option>
-                            <option>Orcs</option>
-                            <option>Elves</option>
-                            <option>Vampires</option>
-                        </select>
-                    </div>
-
-                </div>
-                <div class="mycols col-sm">
-                    <button type="submit" class="btn btn-secondary btn-lg btn-block" id="submitButton">Let's
-                        play!</button>
-
-                </div>
-            </div>
-        </form>
-
-
-
-        <!-- LOG FOR THE MOVES -->
-        <div class="row" id="movesLog">
-            <div class="mycols col-sm" id="logPlayers">
-                <p>Let the fight start!</p>
             </div>
         </div>
+    </div>
+
+    <!-- CREATION PANEL WITH INPUTS AND DROPDOWNS -->
+
+    <form class="needs-validation" novalidate>
+        <div class="row" id="creationPanel">
+            <div class="mycols col-sm-6">
+                <p>Choose Player 1</p>
+
+
+                <div class="form-group">
+                    <label for="validationCustom01">Name</label>
+                    <input type="text" class="form-control" id="namePlayer1" value="Mars" required>
+                    <div class="invalid-feedback">
+                        Please choose a name.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Items</label>
+                    <select class="form-control" id="itemPlayer1" required>
+                        <option>Boots</option>
+                        <option>Staff</option>
+                        <option>Sword</option>
+                        <option>Bow</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Race</label>
+                    <select class="form-control" id="racePlayer1" required>
+                        <option>Humans</option>
+                        <option>Orcs</option>
+                        <option>Elves</option>
+                        <option>Vampires</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mycols col-sm-6">
+                <p>Choose Player 2</p>
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Name</label>
+                    <input type="text" class="form-control" id="namePlayer2" value="Jupiter" required>
+                    <div class="invalid-feedback">
+                        Please choose a name.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Items</label>
+                    <select class="form-control" id="itemPlayer2" required>
+                        <option>Boots</option>
+                        <option>Staff</option>
+                        <option>Sword</option>
+                        <option>Bow</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Race</label>
+                    <select class="form-control" id="racePlayer2" required>
+                        <option>Humans</option>
+                        <option>Orcs</option>
+                        <option>Elves</option>
+                        <option>Vampires</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="mycols col-sm">
+                <button type="submit" class="btn btn-secondary btn-lg btn-block" id="submitButton">Let's
+                    play!</button>
+
+            </div>
+        </div>
+    </form>
+
+
+
+    <!-- LOG FOR THE MOVES -->
+    <div class="row" id="movesLog">
+        <div class="mycols col-sm" id="logPlayers">
+            <p>Let the fight start!</p>
+        </div>
+    </div>
 
 
     </div>
