@@ -155,8 +155,33 @@ function createCharacter(nameId, raceId, itemId) {
 
 function changeCharacterName(id, player) {
     var fighter = document.getElementById(id);
-    fighter.innerText = player.name.toUpperCase();
+    fighter.innerText = player.name.toUpperCase() + " - " + player.race;
 }
+
+ //change imgs
+ function changeCharacterImage(player, id) {
+    switch (player.race) {
+        case "Elves":
+            document.getElementById(id).src = "./pictures/elf.jpg";
+            break;
+
+        case "Humans":
+            document.getElementById(id).src = "./pictures/human.jpg";
+            break;
+
+        case "Orcs":
+            document.getElementById(id).src = "./pictures/orc.jpg";
+            break;
+
+        case "Vampires":
+            document.getElementById(id).src = "./pictures/vampire.jpg";
+            break;
+
+        default:
+            break;
+    }
+}
+
 
 //progress Bar
 function updateProgressBar(id, player) {
@@ -181,6 +206,12 @@ function onSubmit() {
     player2 = createCharacter("namePlayer2", "racePlayer2", "itemPlayer2");
     changeCharacterName("fighter1", player1);
     changeCharacterName("fighter2", player2);
+    changeCharacterImage(player1, "imgFighter1");
+    changeCharacterImage(player2, "imgFighter2");
+   
+
+    // if(player1.race == "Elves") {
+    // document.getElementById("imgFighter1").src= "./pictures/elftest.jpg"}
 
     var weaponElements = document.getElementsByClassName("fas fa-khanda");
     weaponElements[0].innerText = player1.item;

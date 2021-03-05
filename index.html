@@ -18,14 +18,14 @@
     <!-- TITLE -->
     <div class="container">
         <div class="row">
-            <header class="mycols col">
-                <h1>WAR OF THE MONTSTERS</h1>
+            <header class="mycols col text-center">
+                <h3>WAR OF THE MONTSTERS</h3>
             </header>
         </div>
 
         <!-- PLAYERS STATS -->
         <div class="row">
-            <div class="mycols col-6">
+            <div class="mycols col-6 col-md-5">
 
                 <label for="file"><i class="fas fa-heartbeat"></i></label>
                 <div class="progress" style="height: 10px;">
@@ -35,11 +35,11 @@
                 </div>
 
                 <p id="fighter1">FIGHTER 01</p>
-                <img src="./pictures/unknownFighter.jpg" alt="fighter" id="imgFighter1">
+                <img src="./pictures/unknownFighter.jpg" alt="fighter" id="imgFighter1" class="img-fluid mx-auto d-block">
                 <p><i class="fas fa-khanda"></i></p>
             </div>
 
-            <div class="mycols col-6">
+            <div class="mycols col-6 col-md-5 offset-md-2">
 
                 <label for="file"><i class="fas fa-heartbeat"></i></label>
                 <div class="progress" style="height: 10px;">
@@ -48,14 +48,14 @@
                 </div>
 
                 <p id="fighter2">FIGHTER 02</p>
-                <img src="./pictures/unknownFighter.jpg" alt="fighter">
+                <img src="./pictures/unknownFighter.jpg" alt="fighter" id="imgFighter2" class="img-fluid mx-auto d-block">
                 <p><i class="fas fa-khanda"></i></p>
             </div>
         </div>
 
         <!-- PANEL WITH BUTTONS -->
         <div class="row" id="buttonsPanel">
-            <div class="mycols col-6">
+            <div class="mycols col-6 col-md-5">
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-secondary" id="hitButtonPlayer1">hit</button>
                     <button type="button" class="btn btn-secondary" id="healButtonPlayer1">heal</button>
@@ -64,22 +64,9 @@
                         yield
                     </button>
                 </div>
-                <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button id="playAgain" type="button" class="btn btn-primary">Play again</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                
             </div>
-            <div class="mycols col-6">
+            <div class="mycols col-6 col-md-5 offset-md-2">
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-secondary" id="hitButtonPlayer2">hit</button>
                     <button type="button" class="btn btn-secondary" id="healButtonPlayer2">heal</button>
@@ -123,7 +110,7 @@
 
     <form class="needs-validation" novalidate>
         <div class="row" id="creationPanel">
-            <div class="mycols col-sm-6">
+            <div class="mycols col-sm-6 col-md-4 offset-md-1">
                 <p>Choose Player 1</p>
 
 
@@ -156,7 +143,7 @@
                 </div>
             </div>
 
-            <div class="mycols col-sm-6">
+            <div class="mycols col-sm-6 col-md-4 offset-md-2">
                 <p>Choose Player 2</p>
 
                 <div class="form-group">
