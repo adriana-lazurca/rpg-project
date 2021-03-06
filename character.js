@@ -19,7 +19,7 @@ function Person(name, race, item) {
     this.min = 3;
     this.maxDamage = 20;
     this.maxHealing = 30;
-    //TODO change image races
+    //TODO delete names from HTML
 
     this.hit = function (enemy) {
         if (this.currentHealth <= 0 || enemy.currentHealth <= 0) {
@@ -209,9 +209,6 @@ function onSubmit() {
     changeCharacterImage(player1, "imgFighter1");
     changeCharacterImage(player2, "imgFighter2");
    
-
-    // if(player1.race == "Elves") {
-    // document.getElementById("imgFighter1").src= "./pictures/elftest.jpg"}
 
     var weaponElements = document.getElementsByClassName("fas fa-khanda");
     weaponElements[0].innerText = player1.item;

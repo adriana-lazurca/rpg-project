@@ -3,11 +3,6 @@ body {
   color: white;
 }
 
-/* .mycols {
-  background-color: rgb(12, 12, 12);
-  border: 1px solid black;
-} */
-
 #logPlayers {
   height: 200px;
   overflow-y: auto;
