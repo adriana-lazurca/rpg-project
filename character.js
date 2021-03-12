@@ -19,8 +19,7 @@ function Person(name, race, item) {
     this.min = 3;
     this.maxDamage = 20;
     this.maxHealing = 30;
-    //TODO delete names from HTML
-
+    
     this.hit = function (enemy) {
         if (this.currentHealth <= 0 || enemy.currentHealth <= 0) {
             return;
