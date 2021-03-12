@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-6 col-md-5">
 
-                <label for="file"><i class="fas fa-heartbeat"></i></label>
+                <label for="progressPlayer1"><i class="fas fa-heartbeat"></i></label>
                 <div class="progress" style="height: 10px;">
                     <div id="progressPlayer1" class="progress-bar progress-bar-striped bg-danger" role="progressbar"
                         aria-valuemin="0" aria-valuemax="100">
@@ -41,7 +41,7 @@
 
             <div class="col-6 col-md-5 offset-md-2">
 
-                <label for="file"><i class="fas fa-heartbeat"></i></label>
+                <label for="progressPlayer2"><i class="fas fa-heartbeat"></i></label>
                 <div class="progress" style="height: 10px;">
                     <div id="progressPlayer2" class="progress-bar progress-bar-striped bg-danger" role="progressbar"
                         aria-valuemin="0" aria-valuemax="100"></div>
@@ -74,11 +74,11 @@
                         data-target="#exampleModalCenter">yield</button>
                 </div>
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    aria-labelledby="Message" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Message</h5>
                             </div>
 
                             <div class="modal-footer">
@@ -90,20 +90,20 @@
             </div>
         </div>
 
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <!-- <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+            aria-labelledby="Message" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle2">Message</h5>
                     </div>
 
                     <div class="modal-footer">
-                        <button id="playAgain" type="button" class="btn btn-primary">Play again</button>
+                        <button id="playAgain2" type="button" class="btn btn-primary">Play again</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- CREATION PANEL WITH INPUTS AND DROPDOWNS -->
@@ -115,7 +115,7 @@
 
 
                 <div class="form-group">
-                    <label for="validationCustom01">Name</label>
+                    <label for="namePlayer1">Name</label>
                     <input type="text" class="form-control" id="namePlayer1" value="Mars" required>
                     <div class="invalid-feedback">
                         Please choose a name.
@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Items</label>
+                    <label for="itemPlayer1">Items</label>
                     <select class="form-control" id="itemPlayer1" required>
                         <option>Boots</option>
                         <option>Staff</option>
@@ -133,7 +133,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Race</label>
+                    <label for="racePlayer1">Race</label>
                     <select class="form-control" id="racePlayer1" required>
                         <option>Humans</option>
                         <option>Orcs</option>
@@ -147,7 +147,7 @@
                 <p>Choose Player 2</p>
 
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Name</label>
+                    <label for="namePlayer2">Name</label>
                     <input type="text" class="form-control" id="namePlayer2" value="Jupiter" required>
                     <div class="invalid-feedback">
                         Please choose a name.
@@ -155,7 +155,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Items</label>
+                    <label for="itemPlayer2">Items</label>
                     <select class="form-control" id="itemPlayer2" required>
                         <option>Boots</option>
                         <option>Staff</option>
@@ -165,7 +165,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Race</label>
+                    <label for="racePlayer2">Race</label>
                     <select class="form-control" id="racePlayer2" required>
                         <option>Humans</option>
                         <option>Orcs</option>
@@ -193,10 +193,7 @@
         </div>
     </div>
 
-
-    </div>
-
-
+    
     <script src="character.js"></script>
     <script src="gamelogic.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

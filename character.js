@@ -158,8 +158,8 @@ function changeCharacterName(id, player) {
     fighter.innerText = player.name.toUpperCase() + " - " + player.race;
 }
 
- //change imgs
- function changeCharacterImage(player, id) {
+//change imgs
+function changeCharacterImage(player, id) {
     switch (player.race) {
         case "Elves":
             document.getElementById(id).src = "./pictures/elf.jpg";
@@ -208,7 +208,7 @@ function onSubmit() {
     changeCharacterName("fighter2", player2);
     changeCharacterImage(player1, "imgFighter1");
     changeCharacterImage(player2, "imgFighter2");
-   
+
 
     var weaponElements = document.getElementsByClassName("fas fa-khanda");
     weaponElements[0].innerText = player1.item;
@@ -267,49 +267,95 @@ function endGame(firstPlayer, secondPlayer) {
 
 
 //BUTTONS
-document.getElementById("hitButtonPlayer1").addEventListener("click", () => {
+var buttonHitP1 = document.getElementById("hitButtonPlayer1");
+var buttonHitP2 = document.getElementById("hitButtonPlayer2");
+
+var buttonHealP1 = document.getElementById("healButtonPlayer1");
+var buttonHealP2 = document.getElementById("healButtonPlayer2");
+
+var buttonYieldP1 = document.getElementById("yieldButtonPlayer1");
+var buttonYieldP2 = document.getElementById("yieldButtonPlayer2");
+
+// improved version
+function disableButtons(player1Turn) {
+    buttonHitP1.disabled = !player1Turn;
+    buttonHealP1.disabled = !player1Turn;
+    buttonYieldP1.disabled = !player1Turn;
+    
+    buttonHitP2.disabled = player1Turn;
+    buttonHealP2.disabled = player1Turn;
+    buttonYieldP2.disabled = player1Turn;
+}
+
+//first version
+function disableButtonsP1() {
+    buttonHitP1.disabled = true;
+    buttonHealP1.disabled = true;
+    buttonYieldP1.disabled = true;
+
+    buttonHitP2.disabled = false;
+    buttonHealP2.disabled = false;
+    buttonYieldP2.disabled = false;
+}
+
+//first version
+function disableButtonsP2() {
+    buttonHitP1.disabled = false;
+    buttonHealP1.disabled = false;
+    buttonYieldP1.disabled = false;
+    
+    buttonHitP2.disabled = true;
+    buttonHealP2.disabled = true;
+    buttonYieldP2.disabled = true;
+}
+
+buttonHitP1.addEventListener("click", () => {
     addMessageLog(player1.name + " hits the enemy!");
     scrollToBottom("logPlayers");
     player1.hit(player2);
     updateProgressBar("progressPlayer1", player1);
     updateProgressBar("progressPlayer2", player2);
+    disableButtons(false);
     setTimeout(function () {
         endGame(player1, player2);
     }, 500);
 })
 
-document.getElementById("hitButtonPlayer2").addEventListener("click", () => {
+buttonHitP2.addEventListener("click", () => {
     addMessageLog(player2.name + " hits the enemy!");
     scrollToBottom("logPlayers");
     player2.hit(player1);
     updateProgressBar("progressPlayer1", player1);
     updateProgressBar("progressPlayer2", player2);
+    disableButtons(true);
     setTimeout(function () {
         endGame(player1, player2);
     }, 500);
 })
 
-document.getElementById("healButtonPlayer1").addEventListener("click", () => {
+buttonHealP1.addEventListener("click", () => {
     addMessageLog(player1.name + " heals himself!");
     scrollToBottom("logPlayers");
     player1.heal(player2);
     updateProgressBar("progressPlayer1", player1);
+    disableButtons(false);
 })
 
-document.getElementById("healButtonPlayer2").addEventListener("click", () => {
+buttonHealP2.addEventListener("click", () => {
     addMessageLog(player2.name + " heals himself!");
     scrollToBottom("logPlayers");
     player2.heal(player1);
     updateProgressBar("progressPlayer2", player2);
+    disableButtons(true);
 })
 
-document.getElementById("yieldButtonPlayer1").addEventListener("click", () => {
+buttonYieldP1.addEventListener("click", () => {
     addMessageLog(player1.name + " yields!");
     scrollToBottom("logPlayers");
     restartGame(player1, player2);
 })
 
-document.getElementById("yieldButtonPlayer2").addEventListener("click", () => {
+buttonYieldP2.addEventListener("click", () => {
     addMessageLog(player2.name + " yields!");
     scrollToBottom("logPlayers");
     restartGame(player2, player1)
