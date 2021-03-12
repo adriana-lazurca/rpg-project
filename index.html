@@ -35,7 +35,8 @@
                 </div>
 
                 <p id="fighter1">FIGHTER 01</p>
-                <img src="./pictures/unknownFighter.jpg" alt="fighter" id="imgFighter1" class="img-fluid mx-auto d-block">
+                <img src="./pictures/unknownFighter.jpg" alt="fighter" id="imgFighter1"
+                    class="img-fluid mx-auto d-block">
                 <p><i class="fas fa-khanda"></i></p>
             </div>
 
@@ -48,7 +49,8 @@
                 </div>
 
                 <p id="fighter2">FIGHTER 02</p>
-                <img src="./pictures/unknownFighter.jpg" alt="fighter" id="imgFighter2" class="img-fluid mx-auto d-block">
+                <img src="./pictures/unknownFighter.jpg" alt="fighter" id="imgFighter2"
+                    class="img-fluid mx-auto d-block">
                 <p><i class="fas fa-khanda"></i></p>
             </div>
         </div>
@@ -64,7 +66,7 @@
                         yield
                     </button>
                 </div>
-                
+
             </div>
             <div class="col-6 col-md-5 offset-md-2 text-center">
                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -73,8 +75,8 @@
                     <button type="button" class="btn btn-secondary" id="yieldButtonPlayer2" data-toggle="modal"
                         data-target="#exampleModalCenter">yield</button>
                 </div>
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                    aria-labelledby="Message" aria-hidden="true">
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="Message"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -90,20 +92,6 @@
             </div>
         </div>
 
-        <!-- <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
-            aria-labelledby="Message" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle2">Message</h5>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button id="playAgain2" type="button" class="btn btn-primary">Play again</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
 
     <!-- CREATION PANEL WITH INPUTS AND DROPDOWNS -->
@@ -125,21 +113,29 @@
                 <div class="form-group">
                     <label for="itemPlayer1">Items</label>
                     <select class="form-control" id="itemPlayer1" required>
+                        <option value="">Choose...</option>
                         <option>Boots</option>
                         <option>Staff</option>
                         <option>Sword</option>
                         <option>Bow</option>
                     </select>
+                    <div class="invalid-feedback">
+                        Please choose an option.
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="racePlayer1">Race</label>
                     <select class="form-control" id="racePlayer1" required>
+                        <option value="">Choose...</option>
                         <option>Humans</option>
                         <option>Orcs</option>
                         <option>Elves</option>
                         <option>Vampires</option>
                     </select>
+                    <div class="invalid-feedback">
+                        Please choose an option.
+                    </div>
                 </div>
             </div>
 
@@ -157,25 +153,33 @@
                 <div class="form-group">
                     <label for="itemPlayer2">Items</label>
                     <select class="form-control" id="itemPlayer2" required>
+                        <option value="">Choose...</option>
                         <option>Boots</option>
                         <option>Staff</option>
                         <option>Sword</option>
                         <option>Bow</option>
                     </select>
+                    <div class="invalid-feedback">
+                        Please choose an option.
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="racePlayer2">Race</label>
                     <select class="form-control" id="racePlayer2" required>
+                        <option value="">Choose...</option>
                         <option>Humans</option>
                         <option>Orcs</option>
                         <option>Elves</option>
                         <option>Vampires</option>
                     </select>
+                    <div class="invalid-feedback">
+                        Please choose an option.
+                    </div>
                 </div>
 
             </div>
-            
+
             <div class="col-10 offset-1">
                 <button type="submit" class="btn btn-secondary btn-lg btn-block" id="submitButton">Let's
                     play!</button>
@@ -193,7 +197,7 @@
         </div>
     </div>
 
-    
+
     <script src="character.js"></script>
     <script src="gamelogic.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
