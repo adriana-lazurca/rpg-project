@@ -104,14 +104,6 @@ function Person(name, race, item) {
         }
     };
 
-    this.yield = function () { };
-
-    this.damage = function () {
-
-    };
-
-    this.totalDamage = this.damage();
-
     this.displayChar = function () {
         return `I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.maxHealth}`;
     };
@@ -281,7 +273,7 @@ function disableButtons(player1Turn) {
     buttonHitP1.disabled = !player1Turn;
     buttonHealP1.disabled = !player1Turn;
     buttonYieldP1.disabled = !player1Turn;
-    
+
     buttonHitP2.disabled = player1Turn;
     buttonHealP2.disabled = player1Turn;
     buttonYieldP2.disabled = player1Turn;
@@ -303,7 +295,7 @@ function disableButtonsP2() {
     buttonHitP1.disabled = false;
     buttonHealP1.disabled = false;
     buttonYieldP1.disabled = false;
-    
+
     buttonHitP2.disabled = true;
     buttonHealP2.disabled = true;
     buttonYieldP2.disabled = true;

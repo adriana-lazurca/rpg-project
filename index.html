@@ -25,8 +25,7 @@
 
         <!-- PLAYERS STATS -->
         <div class="row">
-            <div class="col-6 col-md-5">
-
+            <section class="col-6 col-md-5">
                 <label for="progressPlayer1"><i class="fas fa-heartbeat"></i></label>
                 <div class="progress" style="height: 10px;">
                     <div id="progressPlayer1" class="progress-bar progress-bar-striped bg-danger" role="progressbar"
@@ -38,9 +37,9 @@
                 <img src="./pictures/unknownFighter.jpg" alt="fighter" id="imgFighter1"
                     class="img-fluid mx-auto d-block">
                 <p><i class="fas fa-khanda"></i></p>
-            </div>
+            </section>
 
-            <div class="col-6 col-md-5 offset-md-2">
+            <section class="col-6 col-md-5 offset-md-2">
 
                 <label for="progressPlayer2"><i class="fas fa-heartbeat"></i></label>
                 <div class="progress" style="height: 10px;">
@@ -52,12 +51,12 @@
                 <img src="./pictures/unknownFighter.jpg" alt="fighter" id="imgFighter2"
                     class="img-fluid mx-auto d-block">
                 <p><i class="fas fa-khanda"></i></p>
-            </div>
+            </section>
         </div>
 
         <!-- PANEL WITH BUTTONS -->
         <div class="row" id="buttonsPanel">
-            <div class="col-6 col-md-5 text-center">
+            <section class="col-6 col-md-5 text-center">
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-secondary" id="hitButtonPlayer1">hit</button>
                     <button type="button" class="btn btn-secondary" id="healButtonPlayer1">heal</button>
@@ -66,9 +65,9 @@
                         yield
                     </button>
                 </div>
+            </section>
 
-            </div>
-            <div class="col-6 col-md-5 offset-md-2 text-center">
+            <section class="col-6 col-md-5 offset-md-2 text-center">
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-secondary" id="hitButtonPlayer2">hit</button>
                     <button type="button" class="btn btn-secondary" id="healButtonPlayer2">heal</button>
@@ -89,7 +88,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
 
     </div>
@@ -98,7 +97,7 @@
 
     <form class="needs-validation" novalidate>
         <div class="row" id="creationPanel">
-            <div class="col-10 offset-1 col-sm-4 offset-sm-1 col-md-4 offset-md-1">
+            <section class="col-10 offset-1 col-sm-4 offset-sm-1 col-md-4 offset-md-1">
                 <p>Choose Player 1</p>
 
 
@@ -137,9 +136,9 @@
                         Please choose an option.
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="col-10 offset-1 col-sm-4 offset-sm-2 col-md-4 offset-md-2">
+            <section class="col-10 offset-1 col-sm-4 offset-sm-2 col-md-4 offset-md-2">
                 <p>Choose Player 2</p>
 
                 <div class="form-group">
@@ -178,13 +177,13 @@
                     </div>
                 </div>
 
-            </div>
+            </section>
 
-            <div class="col-10 offset-1">
+            <section class="col-10 offset-1">
                 <button type="submit" class="btn btn-secondary btn-lg btn-block" id="submitButton">Let's
                     play!</button>
 
-            </div>
+            </section>
         </div>
     </form>
 
@@ -192,9 +191,9 @@
 
     <!-- LOG FOR THE MOVES -->
     <div class="row" id="movesLog">
-        <div class="col-sm" id="logPlayers">
+        <footer class="col-sm" id="logPlayers">
             <p>Let the fight start!</p>
-        </div>
+        </footer>
     </div>
 
 
