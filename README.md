@@ -1,54 +1,10 @@
-# Challenge: RPG Challenge
-|Challenge Parameters  |Challenge Details              |
-|:---------------------|:------------------------------|
-|Repository            |`js-rpg`                       |
-|Challenge type        |`Consolidation`                     |
-|Duration              |`5 days`                       |
-|Deadline              |`15/03/2020 09h00`             |
-|Deployment method     |`GitHub pages`                 |
-|Group composition     | solo or duo                     |
-|Submission's form     | comming soon |
-
-## Rules
-
-1. If something is vague in the README, ask a colleague for help.  If you are still doubtful, then you can always request a coach to clarify.
-1. Publish the game on Github.
-1. Prepare to present the game to the group. (No powerpoints.)
-
-<a href="https://www.youtube.com/watch?v=Y4-I0FuG4LM&feature=youtu.be
-" target="_blank"><img src="resources/becodiante.jpg" 
-alt="Becodiante the great" width="40%"/></a>
-
-
-
-## Welcome adventurer, monster or whatever you are.
-We are reaching the end of the JavaScript course, but no worries: it does not end here. There are so many things to discover, so many things to touch.
-Don't let it scare you because it is so much fun in the end!
-
-This "last" challenge will test your knowledge about JavaScript. If you're struggling, that's fine. Just don't forget to ask your colleagues for help!
-
-## Who am I?
-I am Becodiante The Great, a powerfull wizard in search of the strongest JavaScript gurus alive.
-
-
-## Let...
-me take a proper look at you... Aha, I see. You might be the right fit for this challenge! Although you will have to team up with someone.
-
-## Before we begin...
-I have given you a magical **script** that must be used to create your avatar!  
-OH right... Your instructions. * Coughs *.   
-You and your colleague have to program a game where you can battle each other. 
-The players can use buttons to define which move he/she will make next.
-The game shall only end when a player reaches 0 health.
-
-Don't worry I shall guide you and help you on your way.   
-<details><summary></summary>
-
-![](https://media.giphy.com/media/loRitNPyCbeKntTFp2/giphy.gif)
-</details>
-
+# RPG Challenge
+* #### Who's working on it:
+    _Adriana Lazurca_
+* #### Try the game:
+  Play **War of the Monsters**  [here](https://adriana-lazurca.github.io/rpg-project/)!
+  
 ## The stats
-
 
 <details><summary>Game example (It does not have to look like this!).</summary>
 
