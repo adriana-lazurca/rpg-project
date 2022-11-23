@@ -1,6 +1,5 @@
 # RPG Challenge
-* #### Who's working on it:
-    _Adriana Lazurca_
+
 * #### Try the game:
   Play **War of the Monsters**  [here](https://adriana-lazurca.github.io/rpg-project/)!
   
